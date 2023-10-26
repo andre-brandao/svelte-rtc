@@ -5,8 +5,8 @@
 	import { onMount } from 'svelte';
 
 	onMount(async () => {
-		await roomStore.openUserMedia();
-		// await roomStore.createRoom();
+		// await roomStore.openUserMedia();
+		await roomStore.createRoom();
 	});
 
 	//@ts-ignore
