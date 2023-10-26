@@ -1,5 +1,5 @@
 <script lang="js">
-		import {
+	import {
 		addDoc,
 		collection,
 		deleteDoc,
@@ -12,12 +12,9 @@
 	} from 'firebase/firestore';
 	import { firestore } from '$lib/firebase';
 	import { onMount } from 'svelte';
-	
+
 	import Video from '$lib/Video.svelte';
 
-	import { roomStore } from '$lib/rtc';
-
-	
 	const configuration = {
 		iceServers: [
 			{
@@ -308,7 +305,6 @@
 </div>
 
 <div class="videos">
-	
 	<Video bind:videoSource={localVideo} muted={true} />
 	<Video bind:videoSource={remoteVideo} />
 </div>
