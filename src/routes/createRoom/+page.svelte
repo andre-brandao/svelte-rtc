@@ -8,21 +8,7 @@
 		await roomStore.openUserMedia();
 		// await roomStore.createRoom();
 	});
-	/**
-	 * @type {HTMLVideoElement}
-	 */
-	let localVideo;
-	/**
-	 * @type {HTMLVideoElement}
-	 */
-	let remoteVideo;
-	$: {
-		console.log($roomStore);
-		if ($roomStore.localStream && $roomStore.remoteStream) {
-			localVideo.srcObject = $roomStore.localStream;
-			remoteVideo.srcObject = $roomStore.remoteStream;
-		}
-	}
+
 	//@ts-ignore
 	function clickToCopy(node, target) {
 		async function copyText() {

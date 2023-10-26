@@ -10,23 +10,6 @@
 		// await roomStore.createRoom();
 		await roomStore.joinRoom(data.roomID);
 	});
-	/**
-	 * @type {HTMLVideoElement}
-	 */
-	let localVideo;
-	/**
-	 * @type {HTMLVideoElement}
-	 */
-	let remoteVideo;
-	$: {
-		console.log($roomStore);
-		if ($roomStore.localStream && $roomStore.remoteStream) {
-			localVideo.srcObject = $roomStore.localStream;
-			remoteVideo.srcObject = $roomStore.remoteStream;
-		}
-	}
-
-	let idInput = '';
 </script>
 
 <div class="text-center font-bold text-5xl">
