@@ -1,11 +1,12 @@
 <script lang="js">
+	import { page } from '$app/stores';
 	import Video from '$lib/Video.svelte';
 	import { roomStore } from '$lib/rtc';
 	import { onMount } from 'svelte';
 
 	onMount(async () => {
 		// await roomStore.openUserMedia();
-        await roomStore.createRoom();
+		await roomStore.createRoom();
 	});
 	/**
 	 * @type {HTMLVideoElement}
@@ -22,8 +23,36 @@
 			remoteVideo.srcObject = $roomStore.remoteStream;
 		}
 	}
+	function clickToCopy(node, target) {
+		async function copyText() {
+			let text = target ? document.querySelector(target).innerText : node.innerText;
 
-	let idInput = '';
+			try {
+				await navigator.clipboard.writeText(text);
+
+				node.dispatchEvent(
+					new CustomEvent('copysuccess', {
+						bubbles: true
+					})
+				);
+			} catch (error) {
+				node.dispatchEvent(
+					new CustomEvent('copyerror', {
+						bubbles: true,
+						detail: error
+					})
+				);
+			}
+		}
+
+		node.addEventListener('click', copyText);
+
+		return {
+			destroy() {
+				node.removeEventListener('click', copyText);
+			}
+		};
+	}
 </script>
 
 <div class="text-center font-bold text-5xl">
@@ -43,3 +72,8 @@
 		<p>Outro</p>
 	</div>
 </div>
+<div class="text-center">
+	clique para Copiar:
+	<p use:clickToCopy>{$page.url + '/' + $roomStore.roomId}Clique to copy</p>
+</div>
+<!-- create a copy to clipboard button -->
