@@ -5,8 +5,8 @@
 	import { onMount } from 'svelte';
 
 	onMount(async () => {
-		// await roomStore.openUserMedia();
-		await roomStore.createRoom();
+		await roomStore.openUserMedia();
+		// await roomStore.createRoom();
 	});
 	/**
 	 * @type {HTMLVideoElement}
@@ -64,7 +64,7 @@
 	</p>
 </div>
 
-<div class="flex justify-center gap-4">
+<div class="flex flex-wrap justify-center gap-4">
 	<div class="text-center font-bold bg-primary-500">
 		<Video bind:src={$roomStore.localStream} muted={true} />
 		<p>You</p>
