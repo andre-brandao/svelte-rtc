@@ -23,8 +23,10 @@
 			remoteVideo.srcObject = $roomStore.remoteStream;
 		}
 	}
+	//@ts-ignore
 	function clickToCopy(node, target) {
 		async function copyText() {
+			//@ts-ignore
 			let text = target ? document.querySelector(target).innerText : node.innerText;
 
 			try {
@@ -64,16 +66,16 @@
 
 <div class="flex justify-center gap-4">
 	<div class="text-center font-bold bg-primary-500">
-		<Video bind:videoSource={localVideo} muted={true} />
+		<Video bind:src={$roomStore.localStream} muted={true} />
 		<p>You</p>
 	</div>
 	<div class="text-center font-bold bg-secondary-500">
-		<Video bind:videoSource={remoteVideo} />
+		<Video bind:src={$roomStore.remoteStream} />
 		<p>Outro</p>
 	</div>
 </div>
 <div class="text-center">
 	clique para Copiar:
-	<p use:clickToCopy>{$page.url + '/' + $roomStore.roomId}Clique to copy</p>
+	<p use:clickToCopy>{$page.url + '/' + $roomStore.roomId}</p>
 </div>
 <!-- create a copy to clipboard button -->

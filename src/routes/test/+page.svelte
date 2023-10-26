@@ -4,23 +4,8 @@
 	import { onMount } from 'svelte';
 
 	onMount(async () => {
-		// roomStore.openUserMedia();
+		roomStore.openUserMedia();
 	});
-	/**
-	 * @type {HTMLVideoElement}
-	 */
-	let localVideo;
-	/**
-	 * @type {HTMLVideoElement}
-	 */
-	let remoteVideo;
-	$: {
-		console.log($roomStore);
-		if ($roomStore.localStream && $roomStore.remoteStream) {
-			localVideo.srcObject = $roomStore.localStream;
-			remoteVideo.srcObject = $roomStore.remoteStream;
-		}
-	}
 
 	let idInput = '';
 </script>
@@ -44,11 +29,11 @@
 
 <div class="flex justify-center gap-4">
 	<div class="text-center font-bold bg-primary-500">
-		<Video bind:videoSource={localVideo} muted={true} />
+		<Video bind:src={$roomStore.localStream} muted={true} />
 		<p>You</p>
 	</div>
 	<div class="text-center font-bold bg-secondary-500">
-		<Video bind:videoSource={remoteVideo} />
+		<Video bind:src={$roomStore.remoteStream} />
 		<p>Outro</p>
 	</div>
 </div>

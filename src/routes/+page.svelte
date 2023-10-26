@@ -309,8 +309,8 @@
 
 <div class="videos">
 	
-	<Video bind:videoSource={localVideo} muted={true} />
-	<Video bind:videoSource={remoteVideo} />
+	<Video bind:src={$roomStore.localStream} muted={true} />
+	<Video bind:src={$roomStore.remoteStream} />
 </div>
 
 <div>
@@ -318,12 +318,3 @@
 	<button class="btn variant-filled-primary" on:click={joinRoom}>join</button>
 </div>
 
-<style>
-	video {
-		background: black;
-		width: 640px;
-		height: 100%;
-		display: block;
-		margin: 1em;
-	}
-</style>

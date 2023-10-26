@@ -305,21 +305,15 @@
 </div>
 
 <div class="videos">
-	<Video bind:videoSource={localVideo} muted={true} />
-	<Video bind:videoSource={remoteVideo} />
+	{#if localStream && remoteStream}
+		<!-- content here -->
+
+		<Video bind:src={localStream} muted={true} />
+		<Video bind:src={remoteStream} />
+	{/if}
 </div>
 
 <div>
 	<input type="room-id" bind:value={roomId} />
 	<button class="btn variant-filled-primary" on:click={joinRoom}>join</button>
 </div>
-
-<style>
-	video {
-		background: black;
-		width: 640px;
-		height: 100%;
-		display: block;
-		margin: 1em;
-	}
-</style>
