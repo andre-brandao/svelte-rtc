@@ -3,8 +3,12 @@
 	import { roomStore } from '$lib/rtc';
 	import { onMount } from 'svelte';
 
+	export let data;
+
 	onMount(async () => {
-		// roomStore.openUserMedia();
+		// await roomStore.openUserMedia();
+		// await roomStore.createRoom();
+		await roomStore.joinRoom(data.roomID);
 	});
 	/**
 	 * @type {HTMLVideoElement}
@@ -25,18 +29,8 @@
 	let idInput = '';
 </script>
 
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
-<div>
-	<!-- <button class="btn variant-filled-primary" on:click={$roomStore}>Open camera</button> -->
-
-	<!-- <button> Join room</button> -->
-
-	<!-- <button class="btn variant-filled-primary" on:click={hangUp}>Hangup</button> -->
-</div>
-
 <div class="text-center font-bold text-5xl">
-	<button class="btn variant-filled-primary" on:click={roomStore.createRoom}>Create room</button>
+	<!-- <button class="btn variant-filled-primary" on:click={roomStore.createRoom}>Create room</button> -->
 	<p>
 		Current room is {$roomStore.roomId}
 	</p>
@@ -51,14 +45,4 @@
 		<Video bind:videoSource={remoteVideo} />
 		<p>Outro</p>
 	</div>
-</div>
-
-<div class="flex justify-center pt-5">
-	<input type="text" class="rounded-md p-2" bind:value={idInput} />
-	<button
-		class="btn variant-filled-primary"
-		on:click={() => {
-			roomStore.joinRoom(idInput);
-		}}>join</button
-	>
 </div>
