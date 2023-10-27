@@ -5,7 +5,6 @@
 	import { onMount } from 'svelte';
 
 	onMount(async () => {
-		// await roomStore.openUserMedia();
 		await roomStore.createRoom();
 	});
 
@@ -64,4 +63,3 @@
 	clique para Copiar:
 	<p use:clickToCopy>{$page.url + '/' + $roomStore.roomId}</p>
 </div>
-<!-- create a copy to clipboard button -->

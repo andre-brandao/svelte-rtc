@@ -25,7 +25,7 @@
 <!-- svelte-ignore a11y-media-has-caption -->
 <video
 	bind:this={videoElement}
-	class="m-2 block h-[480px] w-[640px] bg-slate-500"
+	class="m-2 block transform scale-x-[-1] h-[480px] w-[640px] bg-slate-500"
 	autoplay
 	playsinline
 	{muted}
