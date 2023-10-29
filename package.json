@@ -37,6 +37,7 @@
 	"type": "module",
 	"dependencies": {
 		"firebase": "^10.5.0",
+		"lucide-svelte": "^0.290.0",
 		"sveltefire": "^0.4.2"
 	}
 }

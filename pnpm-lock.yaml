@@ -8,6 +8,9 @@ dependencies:
   firebase:
     specifier: ^10.5.0
     version: 10.5.0
+  lucide-svelte:
+    specifier: ^0.290.0
+    version: 0.290.0(svelte@4.2.2)
   sveltefire:
     specifier: ^0.4.2
     version: 0.4.2(firebase@10.5.0)(svelte@4.2.2)
@@ -2029,6 +2032,14 @@ packages:
     dependencies:
       yallist: 4.0.0
     dev: true
+
+  /lucide-svelte@0.290.0(svelte@4.2.2):
+    resolution: {integrity: sha512-JAH8R5krev7+2QP9mb37rbk0brViGqJFpD7mHroQYoAZk2rKLzlpPYWHfSGLd6lL7fFea97ThrhJFaMzACEA0A==}
+    peerDependencies:
+      svelte: '>=3 <5'
+    dependencies:
+      svelte: 4.2.2
+    dev: false
 
   /magic-string@0.27.0:
     resolution: {integrity: sha512-8UnnX2PeRAPZuN12svgR9j7M1uWMovg/CEnIwIG0LFkXSJJe4PdfUGiTGl8V9bsBHFUtfVINcSyYxd7q+kx9fA==}
