@@ -3,6 +3,9 @@
 	import Video from '$lib/Video.svelte';
 	import { roomStore } from '$lib/rtc';
 	import { onMount } from 'svelte';
+	import { clipboard, getToastStore } from '@skeletonlabs/skeleton';
+	// import { toastStore } from '$lib/stores';
+	const toastStore = getToastStore();
 
 	onMount(async () => {
 		await roomStore.createRoom();
@@ -40,6 +43,12 @@
 			}
 		};
 	}
+
+	function getUrl() {
+		//return root page url + /joinRoom + / + roomId
+		// return $page.url + '/' + $roomStore.roomId;
+		return $page.url.toString().replace($page.route.id ?? '', 'joinRoom/');
+	}
 </script>
 
 <div class="text-center font-bold text-5xl">
@@ -59,7 +68,11 @@
 		<p>Outro</p>
 	</div>
 </div>
-<div class="text-center">
-	clique para Copiar:
-	<p use:clickToCopy>{$page.url + '/' + $roomStore.roomId}</p>
+<div class="text-center p-5">
+	<button
+		class="btn bg-warning-500 p-4 cursor-pointer"
+		on:click={() =>
+			toastStore.trigger({ message: 'Copied to clipboard', hideDismiss: true, timeout: 1000 })}
+		use:clipboard={getUrl() + $roomStore.roomId}>Copy Room Link</button
+	>
 </div>

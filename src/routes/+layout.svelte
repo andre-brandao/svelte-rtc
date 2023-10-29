@@ -1,14 +1,22 @@
 <script>
+	// import { toastStore } from '$lib/stores';
 	import '../app.postcss';
-	import { AppBar } from '@skeletonlabs/skeleton';
+	import { AppBar, Toast } from '@skeletonlabs/skeleton';
 	import { Tv } from 'lucide-svelte';
+	import { initializeStores } from '@skeletonlabs/skeleton';
+
+	initializeStores();
+	// initializeToastStore();
 </script>
 
+<Toast />
 <AppBar>
 	<svelte:fragment slot="lead">
-		<Tv />
+		<a href="/">
+			<Tv />
+		</a>
 	</svelte:fragment>
-	<svelte:fragment slot="trail">(actions)</svelte:fragment>
+	<svelte:fragment slot="trail">(action)</svelte:fragment>
 	<svelte:fragment slot="headline">Fake Meet</svelte:fragment>
 </AppBar>
 
