@@ -47,7 +47,7 @@
 	function getUrl() {
 		//return root page url + /joinRoom + / + roomId
 		// return $page.url + '/' + $roomStore.roomId;
-		return $page.url.toString().replace($page.route.id ?? '', 'joinRoom/');
+		return $page.url.toString().replace($page.route.id ?? '', '/joinRoom/');
 	}
 </script>
 
